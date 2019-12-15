@@ -3,10 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import api from './request/api/'
+
+import '@/plugin/iview'
+
+Vue.prototype.$api = api
+
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#admin')
