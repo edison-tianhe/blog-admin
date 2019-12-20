@@ -1,5 +1,7 @@
 import HttpRequest from './axios'
-const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : ''
+import { DEV_BASEURL, PROD_BASEURL } from '@/config'
+
+const baseUrl = process.env.NODE_ENV === 'development' ? DEV_BASEURL : PROD_BASEURL
 
 const axios = new HttpRequest(baseUrl)
 export default axios

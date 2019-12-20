@@ -1,12 +1,12 @@
 <template>
   <div>
     <Button @click="getList">获取find数据</Button>
-    <Button @click="exit">退出</Button>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'home',
   props: {},
   data () {
     return {}
@@ -25,10 +25,6 @@ export default {
           }
           this.$Message.success(res.msg)
         })
-    },
-    exit () {
-      this.$store.commit('exit')
-      this.$router.push({ name: 'login' })
     }
   },
   components: {}

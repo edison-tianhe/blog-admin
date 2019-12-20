@@ -1,7 +1,8 @@
 import axios from 'axios'
-import store from '../store'
 import router from '../router'
 import { Message } from 'view-design'
+
+import { LOGIN_PAGE_NAME } from '@/config'
 
 class HttpRequest {
   constructor (baseUrl) {
@@ -50,13 +51,12 @@ class HttpRequest {
   }
   toLogin (response) {
     switch (response.status) {
-      case 401:
-        store.commit('exit')
-        Message.error(response.data.msg)
-        router.push({ name: 'login' })
-        break
-      default:
-        break
+    case 401:
+      Message.error(response.data.msg)
+      router.push({ name: LOGIN_PAGE_NAME })
+      break
+    default:
+      break
     }
   }
   request (options) {

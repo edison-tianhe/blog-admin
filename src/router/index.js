@@ -4,8 +4,8 @@ import routes from './routers'
 import store from '../store'
 import { LoadingBar } from 'view-design'
 
-const HOME_NAME = 'home'
-const LOGIN_PAGE_NAME = 'login'
+import { doesHttpOnlyCookie } from '@/utils/utils'
+import { TITLE, HOME_NAME, LOGIN_PAGE_NAME, TOKEN } from '@/config'
 
 Vue.use(Router)
 const router = new Router({
@@ -14,8 +14,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   LoadingBar.start()
-  const userInfo = store.state.userInfo
-  const token = userInfo ? userInfo.id : null
+  const token = doesHttpOnlyCookie(TOKEN)
   if (!token && to.name !== LOGIN_PAGE_NAME) { // 未登录且要跳转的页面不是登录页
     LoadingBar.finish()
     next({ name: LOGIN_PAGE_NAME })
@@ -30,7 +29,8 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(to => {
-  document.title = to.meta.title
+  document.title = `${TITLE} - ${to.meta.title}`
+  store.commit('setRouterActive', to)
   LoadingBar.finish()
   window.scrollTo(0, 0)
 })

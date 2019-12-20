@@ -21,8 +21,8 @@ export default {
   data () {
     return {
       formInline: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       ruleInline: {
         username: [ { required: true, message: '请输入用户名', trigger: 'blur' } ],
@@ -33,6 +33,10 @@ export default {
       },
       loading: false
     }
+  },
+  created () {
+    // ? 正常不会进入登录页,一旦进入就给之前所有的用户信息全部清除
+    this.$store.commit('exit')
   },
   methods: {
     handleSubmit (name) {

@@ -1,0 +1,49 @@
+.layout, .ivu-layout {
+  height: 100%;
+}
+.header-horizontal {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  .layout-logo {
+    img {
+      display: block;
+      max-height: 40px;
+    }
+  }
+  .layout-nav{
+    .ivu-breadcrumb {
+      color: #000;
+      font-weight: 400;
+      span {
+        /deep/.ivu-breadcrumb-item-link {
+          cursor: pointer;
+          i {
+            color: inherit;
+          }
+        }
+      }
+      span:last-child {
+        color: inherit;
+        font-weight: inherit;
+      }
+    }
+  }
+}
+
+.ivu-layout-sider {
+  height: 100%;
+  overflow-y: auto;
+  background: #fff;
+}
+
+content {
+  transition: all .3s ease-in-out;
+}
+
+content:hover {
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  border-color: #eee;
+}

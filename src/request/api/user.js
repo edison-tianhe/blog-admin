@@ -18,10 +18,10 @@ export default {
       method: 'get'
     })
   },
-  logout (token) {
+  logout () {
     return axios.request({
       url: 'logout',
-      method: 'post'
+      method: 'get'
     })
   }
 }
