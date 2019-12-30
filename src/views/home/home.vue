@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <Button @click="getList">获取find数据</Button>
-  </div>
+  <div></div>
 </template>
 
 <script>
@@ -15,18 +13,7 @@ export default {
   created () {},
   mounted () {},
   watch: {},
-  methods: {
-    getList () {
-      this.$api.getUserInfo()
-        .then(({ res, status }) => {
-          if (res.code !== 0) {
-            this.$Message.error(res.msg)
-            return false
-          }
-          this.$Message.success(res.msg)
-        })
-    }
-  },
+  methods: {},
   components: {}
 }
 </script>

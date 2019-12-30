@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import routers from '@/router/routers'
 import { getMenuByRouter, getCacheRouter } from '@/utils/utils'
+import { DEV_BASEURL, DEV_IMG_BASEURL } from '@/config'
 
 Vue.use(Vuex)
 
@@ -10,6 +11,10 @@ export default new Vuex.Store({
   state: {
     // *用户信息
     userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
+    // *请求路径
+    baseUrl: DEV_BASEURL,
+    // *图片路径
+    baseImgUrl: DEV_IMG_BASEURL,
     // *菜单列表
     menuList: getMenuByRouter(routers),
     // *缓存列表
@@ -22,6 +27,8 @@ export default new Vuex.Store({
     breadCrumbList: []
   },
   getters: {
+    baseUrl: (state) => state.baseUrl,
+    baseImgUrl: (state) => state.baseImgUrl,
     menuList: (state) => state.menuList,
     cacheList: (state) => state.cacheList,
     routerActiveName: (state) => state.routerActiveName,

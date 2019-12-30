@@ -2,7 +2,7 @@
   <div>
     <div class="demo-upload-list" v-for="(item,index) in uploadList" :key="index">
         <template v-if="item.status === 'finished'">
-            <img :src="`${ossBasePath}${item.url}`">
+            <img :src="`${baseImgUrl}/${item.url}`">
             <div class="demo-upload-list-cover">
                 <Icon type="ios-eye-outline" @click.native="handleView(item.url)"></Icon>
                 <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
@@ -23,9 +23,10 @@
       :on-format-error="handleFormatError"
       :on-exceeded-size="handleMaxSize"
       :before-upload="handleBeforeUpload"
+      :with-credentials="true"
       multiple
       type="drag"
-      :action="baseUrl+`oss/categoryImage`"
+      :action="`${baseUrl}/upload`"
       style="display: inline-block;width:58px;">
       <div style="width: 58px;height:58px;line-height: 58px;">
         <Icon type="ios-camera" size="20"></Icon>
@@ -35,7 +36,8 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import imagePreview from '_c/image-preview'
+// import imagePreview from '_c/image-preview'
+
 export default {
   data () {
     return {
@@ -58,11 +60,11 @@ export default {
     this.uploadList = this.$refs.upload.fileList
   },
   computed: {
-    ...mapGetters(['baseUrl', 'ossBasePath'])
+    ...mapGetters(['baseUrl', 'baseImgUrl'])
   },
   methods: {
     handleView (url) {
-      imagePreview([`${this.ossBasePath}${url}`])
+      // imagePreview([`${this.ossBasePath}${url}`])
     },
     handleRemove (file) {
       const fileList = this.$refs.upload.fileList
@@ -74,7 +76,7 @@ export default {
         this.$Message.warning(`上传失败`)
         return false
       }
-      file.url = `${res.data}`
+      file.url = `${res.data.path}`
       this.$emit('on-change', this.uploadList)
     },
     handleFormatError (file) {
@@ -96,7 +98,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .demo-upload-list{
     display: flex;
     width: 60px;

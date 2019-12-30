@@ -1,11 +1,11 @@
 import store from '@/store'
-import imagePreview from '_c/image-preview'
+// import imagePreview from '_c/image-preview'
 
 const btns = {
   image: (h, params, vm, type) => {
     return h('img', {
       attrs: {
-        src: params.row[type] ? `${store.getters.ossBasePath}${params.row[type]}` : require('@/assets/images/defaultComm.png')
+        src: params.row[type] ? `${store.getters.ossBasePath}${params.row[type]}` : ''
       },
       style: {
         margin: '5px 0',
@@ -14,9 +14,9 @@ const btns = {
       },
       on: {
         click: () => {
-          imagePreview([
-            params.row[type] ? `${store.getters.ossBasePath}${params.row[type]}` : require('@/assets/images/defaultComm.png')
-          ])
+          // imagePreview([
+          //   params.row[type] ? `${store.getters.ossBasePath}${params.row[type]}` : require('@/assets/images/defaultComm.png')
+          // ])
         }
       }
     })

@@ -9,6 +9,8 @@ module.exports = {
   TOKEN: 'Edison_cookies',
   // ? 开发环境axios默认路径
   DEV_BASEURL: 'http://localhost:3000',
+  // ? 开发环境axios图片路径
+  DEV_IMG_BASEURL: 'http://localhost:3000',
   // ? 生产环境axios默认路径
   PROD_BASEURL: ''
 }

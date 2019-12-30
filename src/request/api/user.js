@@ -1,18 +1,21 @@
 import axios from '../api.request'
 
 export default {
-  login ({ username, password }) {
-    const data = {
-      username,
-      password
-    }
+  login (data) {
     return axios.request({
       url: 'login',
       data,
       method: 'post'
     })
   },
-  getUserInfo () {
+  signin (data) {
+    return axios.request({
+      url: 'signin',
+      data,
+      method: 'post'
+    })
+  },
+  getUsers () {
     return axios.request({
       url: 'users',
       method: 'get'
