@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     handleView (url) {
-      imagePreview([`${this.baseImgUrl}${url}`])
+      imagePreview([`${this.baseImgUrl}/${url}`])
     },
     handleRemove (file) {
       const fileList = this.$refs.upload.fileList

@@ -101,12 +101,12 @@ const btns = {
         placement: 'left'
       },
       style: {
-        marginRight: '5px'
+        marginRight: '5px',
+        textAlign: 'left'
       },
       on: {
         'on-ok': () => {
           vm.$emit('on-item-delete', params)
-          // vm.$emit('input', params.tableData.filter((item, index) => index !== params.row.initRowIndex))
         }
       }
     }, [
