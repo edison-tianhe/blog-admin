@@ -1,22 +1,22 @@
 import store from '@/store'
-// import imagePreview from '_c/image-preview'
+import imagePreview from '_c/image-preview'
 
 const btns = {
   image: (h, params, vm, type) => {
     return h('img', {
       attrs: {
-        src: params.row[type] ? `${store.getters.ossBasePath}${params.row[type]}` : ''
+        src: params.row[type] ? `${store.getters.baseImgUrl}/${params.row[type]}` : require('@/assets/images/no-img.png')
       },
       style: {
         margin: '5px 0',
-        width: '85px',
+        width: '100%',
         display: 'block'
       },
       on: {
         click: () => {
-          // imagePreview([
-          //   params.row[type] ? `${store.getters.ossBasePath}${params.row[type]}` : require('@/assets/images/defaultComm.png')
-          // ])
+          imagePreview([
+            params.row[type] ? `${store.getters.baseImgUrl}/${params.row[type]}` : require('@/assets/images/no-img.png')
+          ])
         }
       }
     })

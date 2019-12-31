@@ -14,5 +14,22 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  mounted () {
+    // *全局图片加载失败的处理
+    window.addEventListener('error', function (e) {
+      const tagName = e.target.tagName
+      const tagSrc = e.target.src
+      const times = Number(e.target.dataset.times) || 0
+      const allTimes = 3
+      if (tagName.toUpperCase() === 'IMG') {
+        if (times >= allTimes) {
+          e.target.src = require('@/assets/images/no-img.png')
+        } else {
+          e.target.dataset.times = times + 1
+          e.target.src = tagSrc
+        }
+      }
+    }, true)
+  }
 }).$mount('#admin')

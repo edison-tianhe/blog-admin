@@ -36,7 +36,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-// import imagePreview from '_c/image-preview'
+import imagePreview from '_c/image-preview'
 
 export default {
   data () {
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     handleView (url) {
-      // imagePreview([`${this.ossBasePath}${url}`])
+      imagePreview([`${this.baseImgUrl}${url}`])
     },
     handleRemove (file) {
       const fileList = this.$refs.upload.fileList

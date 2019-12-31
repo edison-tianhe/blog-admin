@@ -66,15 +66,7 @@ export default {
       userList: [],
       columns: [
         { title: 'ID', key: 'id', width: 60 },
-        { title: '头像',
-          key: 'avator',
-          align: 'center',
-          width: 70,
-          render: (h, params) => {
-            return h('Avatar', {
-              attrs: { src: `${this.baseImgUrl}/${params.row.avator}`, icon: 'ios-person' }
-            })
-          } },
+        { title: '头像', key: 'handle', align: 'center', width: 70, options: ['image/avator'] },
         { title: '用户名', key: 'username' },
         { title: '性别', key: 'sex', render (h, params) { return h('span', params.row.sex === 1 ? '男' : '女') } },
         { title: '手机号', key: 'phone' },
