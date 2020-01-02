@@ -15,6 +15,21 @@ export default {
       method: 'post'
     })
   },
+  usersDelete (id) {
+    let url = `users/delete`
+    id && (url = `users/delete/${id}`)
+    return axios.request({
+      url: url,
+      method: 'delete'
+    })
+  },
+  usersUpdate (data) {
+    return axios.request({
+      url: 'users/update',
+      data,
+      method: 'put'
+    })
+  },
   getUsers () {
     return axios.request({
       url: 'users',

@@ -116,25 +116,40 @@ export default {
       this.modal = true
     },
     itemDelete (params) {
-      console.log('删除')
+      const { id } = params.row
+      this.$api.usersDelete(id)
+        .then(({ res, status }) => {
+          if (res.code !== 0) {
+            this.$Message.error(res.msg)
+            return false
+          }
+          this.getUsers()
+          this.$Message.success(res.msg)
+        })
     },
     uploadChange (data) {
-      usersForm.avator = data.length ? data[0].url : null
+      this.usersForm.avator = data.length ? data[0].url : null
     },
     modalOk (name) {
+      let _url = null
+      if (this.usersForm.id) {
+        _url = this.$api.usersUpdate(this.usersForm)
+      } else {
+        _url = this.$api.signin(this.usersForm)
+      }
       this.$refs[name].validate((valid) => {
         if (valid) {
           this.modal_loading = true
-          this.$api.signin(this.usersForm)
-            .then(({ res, status }) => {
-              this.modal_loading = false
-              if (res.code !== 0) {
-                this.$Message.error(res.msg)
-                return false
-              }
-              this.modal = true
-              this.$Message.success(res.msg)
-            })
+          _url.then(({ res, status }) => {
+            this.modal_loading = false
+            if (res.code !== 0) {
+              this.$Message.error(res.msg)
+              return false
+            }
+            this.getUsers()
+            this.modal = false
+            this.$Message.success(res.msg)
+          })
         } else {
           this.$Message.error('请填写完成信息')
         }
