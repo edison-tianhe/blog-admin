@@ -61,7 +61,38 @@ export default [
           title: '用户管理',
           icon: 'ios-people'
         },
-        component: () => import('@/views/users/usersList.vue')
+        component: () => import('@/views/users/list.vue')
+      }
+    ]
+  },
+  {
+    path: '/article',
+    name: 'article',
+    redirect: '/articlesList',
+    component: Main,
+    meta: {
+      showAlways: true,
+      title: '文章管理',
+      icon: 'ios-bookmarks'
+    },
+    children: [
+      {
+        path: '/articlesList',
+        name: 'articlesList',
+        meta: {
+          title: '文章列表',
+          icon: 'ios-bookmarks'
+        },
+        component: () => import('@/views/article/list.vue')
+      },
+      {
+        path: '/articleInsert',
+        name: 'articleInsert',
+        meta: {
+          title: '添加文章',
+          icon: 'ios-brush'
+        },
+        component: () => import('@/views/article/insert.vue')
       }
     ]
   },

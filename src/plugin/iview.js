@@ -4,7 +4,7 @@ import '@/assets/style/base.less'
 
 import { Button, Icon, Form, FormItem, Input, Message, Layout,
   Menu, MenuItem, Sider, Submenu, Breadcrumb, BreadcrumbItem, Modal, Table,
-  RadioGroup, Radio, Upload, Avatar, Poptip } from 'view-design'
+  RadioGroup, Radio, Upload, Avatar, Poptip, Card } from 'view-design'
 
 Vue.component('Button', Button)
 Vue.component('Icon', Icon)
@@ -25,6 +25,7 @@ Vue.component('Radio', Radio)
 Vue.component('Upload', Upload)
 Vue.component('Avatar', Avatar)
 Vue.component('Poptip', Poptip)
+Vue.component('Card', Card)
 
 Vue.prototype.$Message = Message
 Vue.prototype.$Modal = Modal
