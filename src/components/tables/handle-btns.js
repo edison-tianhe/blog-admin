@@ -5,7 +5,9 @@ const btns = {
   image: (h, params, vm, type) => {
     return h('img', {
       attrs: {
-        src: params.row[type] ? `${store.getters.baseImgUrl}/${params.row[type]}` : require('@/assets/images/no-img.png')
+        src: params.row[type]
+          ? `${store.getters.baseImgUrl}/${params.row[type]}`
+          : require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 34)}.png`)
       },
       style: {
         margin: '5px 0',
@@ -15,7 +17,9 @@ const btns = {
       on: {
         click: () => {
           imagePreview([
-            params.row[type] ? `${store.getters.baseImgUrl}/${params.row[type]}` : require('@/assets/images/no-img.png')
+            params.row[type]
+              ? `${store.getters.baseImgUrl}/${params.row[type]}`
+              : require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 34)}.png`)
           ])
         }
       }
