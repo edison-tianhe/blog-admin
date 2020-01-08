@@ -24,7 +24,7 @@ new Vue({
       const allTimes = 3
       if (tagName.toUpperCase() === 'IMG') {
         if (times >= allTimes) {
-          e.target.src = require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 34)}.png`)
+          e.target.src = require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 33) + 1}.png`)
         } else {
           e.target.dataset.times = times + 1
           e.target.src = tagSrc

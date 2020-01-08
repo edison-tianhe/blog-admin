@@ -7,7 +7,7 @@ const btns = {
       attrs: {
         src: params.row[type]
           ? `${store.getters.baseImgUrl}/${params.row[type]}`
-          : require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 34)}.png`)
+          : require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 33) + 1}.png`)
       },
       style: {
         margin: '5px 0',
@@ -19,7 +19,7 @@ const btns = {
           imagePreview([
             params.row[type]
               ? `${store.getters.baseImgUrl}/${params.row[type]}`
-              : require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 34)}.png`)
+              : require(`@/assets/images/emoticon/image_emoticon${Math.floor(Math.random() * 33) + 1}.png`)
           ])
         }
       }
