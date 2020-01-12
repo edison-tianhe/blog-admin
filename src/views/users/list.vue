@@ -131,15 +131,15 @@ export default {
       this.usersForm.avator = data.length ? data[0].url : null
     },
     modalOk (name) {
-      let _url = null
-      if (this.usersForm.id) {
-        _url = this.$api.usersUpdate(this.usersForm)
-      } else {
-        _url = this.$api.signin(this.usersForm)
-      }
       this.$refs[name].validate((valid) => {
         if (valid) {
           this.modal_loading = true
+          let _url = null
+          if (this.usersForm.id) {
+            _url = this.$api.usersUpdate(this.usersForm)
+          } else {
+            _url = this.$api.signin(this.usersForm)
+          }
           _url.then(({ res, status }) => {
             this.modal_loading = false
             if (res.code !== 0) {

@@ -2,7 +2,7 @@
   <div>
     <Row :gutter="16" justify="start">
       <Col :md="24" :lg="8">
-        <my-card class="insert-btn" @click.native="$router.push({ name: 'articleInsert' })">
+        <my-card class="insert-btn" @click.native="$router.push({ name: 'articleEdit' })">
           <Icon type="ios-add" size="40"/>
           <p>添加文章</p>
         </my-card>
@@ -16,7 +16,6 @@
           @on-item-close="itemClose"
           @on-item-stick="itemStick"
           @on-item-status="itemStatus"
-          @on-item-input="itemInput"
           @on-item-update="itemUpdate"></my-card>
       </Col>
     </Row>
@@ -38,25 +37,45 @@ export default {
   },
   methods: {
     itemUp (data) {
-      console.log('上升', data)
+      console.log('上升')
     },
     itemDown (data) {
-      console.log('下降', data)
+      console.log('下降')
     },
     itemClose (data) {
-      console.log('删除', data)
+      const { id } = data
+      this.$api.articlesDelete(id)
+        .then(({ res, status }) => {
+          if (res.code !== 0) {
+            this.$Message.error(res.msg)
+            return false
+          }
+          this.getArticles()
+          this.$Message.success(res.msg)
+        })
     },
-    itemStick (status) {
-      console.log('置顶', status)
+    itemStick (data, status) {
+      this.$api.articlesStick(data.id, status)
+        .then(({ res, status }) => {
+          if (res.code !== 0) {
+            this.$Message.error(res.msg)
+            return false
+          }
+          this.$Message.success(res.msg)
+        })
     },
-    itemStatus (status) {
-      console.log('发布状态', status)
-    },
-    itemInput (val) {
-      console.log('排序值', val)
+    itemStatus (data, status) {
+      this.$api.articlesStatus(data.id, status)
+        .then(({ res, status }) => {
+          if (res.code !== 0) {
+            this.$Message.error(res.msg)
+            return false
+          }
+          this.$Message.success(res.msg)
+        })
     },
     itemUpdate (data) {
-      console.log('编辑', data)
+      this.$router.push({ name: 'articleEdit', params: { id: data.id } })
     },
     getArticles () {
       this.$api.getArticles()

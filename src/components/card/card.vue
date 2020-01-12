@@ -2,24 +2,30 @@
   <Card>
     <slot>
       <div class="card-margin card-header">
-        {{data.stick ? '置顶' : ''}}
         <Icon type="ios-arrow-up" size="24" @click="iconUp"/>
         <Icon type="ios-arrow-down" size="24" @click="iconDown"/>
-        <Icon type="md-close" size="24" @click="iconClose"/>
+        <Poptip
+          confirm
+          placement="left-start"
+          title="你确定要删除该文章吗?"
+          style="text-align: left"
+          @on-ok="iconClose">
+          <Icon type="md-close" size="24"/>
+        </Poptip>
       </div>
-      <img class="card-img" src="">
+      <img class="card-img" :src="`${baseImgUrl}/${data.avator}`">
       <div class="card-margin card-content">
         <div class="card-content-h1">
           <h1>{{data.title}}</h1>
         </div>
         <div class="card-content-p">
-          <p>{{data.content}}</p>
+          <p>{{data.intro || '作者有点小偷懒~,该文章么得相关简介~'}}</p>
         </div>
       </div>
       <div class="card-footer">
         <i-switch
           size="large"
-          true-color="#13ce66"
+          true-color="#f36"
           :true-value="1"
           :false-value="0"
           :value="data.stick"
@@ -50,6 +56,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'myCard',
   props: {
@@ -57,6 +64,9 @@ export default {
       type: Object,
       default: () => { return {} }
     }
+  },
+  computed: {
+    ...mapGetters(['baseImgUrl'])
   },
   methods: {
     iconUp () {
@@ -69,10 +79,10 @@ export default {
       this.$emit('on-item-close', this.data)
     },
     stickChange (status) {
-      this.$emit('on-item-stick', status)
+      this.$emit('on-item-stick', this.data, status)
     },
     statusChange (status) {
-      this.$emit('on-item-status', status)
+      this.$emit('on-item-status', this.data, status)
     },
     inputChange (val) {
       this.$emit('on-item-input', val)

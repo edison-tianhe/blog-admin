@@ -86,13 +86,22 @@ export default [
         component: () => import('@/views/article/list.vue')
       },
       {
-        path: '/articleInsert',
-        name: 'articleInsert',
+        path: '/articleEdit',
+        name: 'articleEdit',
         meta: {
-          title: '添加文章',
+          title: '文章编辑',
           icon: 'ios-brush'
         },
-        component: () => import('@/views/article/insert.vue')
+        component: () => import('@/views/article/edit.vue')
+      },
+      {
+        path: '/categoryManage',
+        name: 'categoryManage',
+        meta: {
+          title: '分类管理',
+          icon: 'ios-keypad'
+        },
+        component: () => import('@/views/article/category.vue')
       }
     ]
   },

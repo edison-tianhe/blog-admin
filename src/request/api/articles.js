@@ -28,5 +28,23 @@ export default {
       url: 'articles',
       method: 'get'
     })
+  },
+  articlesDetails (id) {
+    return axios.request({
+      url: `articles/${id}`,
+      method: 'get'
+    })
+  },
+  articlesStick (id, stick) {
+    return axios.request({
+      url: `articles/stick/${id}/${stick}`,
+      method: 'put'
+    })
+  },
+  articlesStatus (id, status) {
+    return axios.request({
+      url: `articles/status/${id}/${status}`,
+      method: 'put'
+    })
   }
 }

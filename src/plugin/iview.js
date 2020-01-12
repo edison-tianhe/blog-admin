@@ -1,10 +1,15 @@
 import Vue from 'vue'
+import mavonEditor from 'mavon-editor'
 
 import '@/assets/style/base.less'
+import 'mavon-editor/dist/css/index.css'
 
 import { Button, Switch, Icon, Form, FormItem, Input, Message, Layout,
   Menu, MenuItem, Sider, Submenu, Breadcrumb, BreadcrumbItem, Modal, Table,
-  RadioGroup, Radio, Upload, Avatar, Poptip, Card, Row, Col, InputNumber } from 'view-design'
+  RadioGroup, Radio, Upload, Avatar, Poptip, Card, Row, Col, InputNumber,
+  Select, Option } from 'view-design'
+
+Vue.use(mavonEditor)
 
 Vue.component('Button', Button)
 Vue.component('i-switch', Switch)
@@ -30,6 +35,8 @@ Vue.component('Card', Card)
 Vue.component('Row', Row)
 Vue.component('Col', Col)
 Vue.component('InputNumber', InputNumber)
+Vue.component('Select', Select)
+Vue.component('Option', Option)
 
 Vue.prototype.$Message = Message
 Vue.prototype.$Modal = Modal
