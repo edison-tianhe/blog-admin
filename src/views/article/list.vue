@@ -84,7 +84,7 @@ export default {
             this.$Message.error(res.msg)
             return false
           }
-          this.articlesList = res.data
+          this.articlesList = res.data.data
         })
     }
   },
