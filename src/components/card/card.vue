@@ -13,7 +13,7 @@
           <Icon type="md-close" size="24"/>
         </Poptip>
       </div>
-      <img class="card-img" :src="`${baseImgUrl}/${data.avator}`">
+      <img class="card-img" :src="`${baseImgUrl}${data.avator}`">
       <div class="card-margin card-content">
         <div class="card-content-h1">
           <h1>{{data.title}}</h1>

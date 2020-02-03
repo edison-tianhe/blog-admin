@@ -8,9 +8,11 @@ module.exports = {
   // ? token保存在cookie中的名称
   TOKEN: 'Edison_cookies',
   // ? 开发环境axios默认路径
-  DEV_BASEURL: 'http://localhost:3000',
+  DEV_BASEURL: 'http://localhost:3000/',
   // ? 开发环境axios图片路径
-  DEV_IMG_BASEURL: 'http://localhost:3000',
+  DEV_IMG_BASEURL: 'http://localhost:3000/',
   // ? 生产环境axios默认路径
-  PROD_BASEURL: ''
+  PROD_BASEURL: 'http://47.95.242.44:3000/',
+  // ? 开发环境axios图片路径
+  PROD_IMG_BASEURL: 'http://47.95.242.44:3000/'
 }

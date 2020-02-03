@@ -3,7 +3,10 @@ import Vuex from 'vuex'
 
 import routers from '@/router/routers'
 import { getMenuByRouter, getCacheRouter } from '@/utils/utils'
-import { DEV_BASEURL, DEV_IMG_BASEURL } from '@/config'
+import { DEV_BASEURL, DEV_IMG_BASEURL, PROD_BASEURL, PROD_IMG_BASEURL } from '@/config'
+
+const baseUrl = process.env.NODE_ENV === 'development' ? DEV_BASEURL : PROD_BASEURL
+const imgBaseUrl = process.env.NODE_ENV === 'development' ? DEV_IMG_BASEURL : PROD_IMG_BASEURL
 
 Vue.use(Vuex)
 
@@ -12,9 +15,9 @@ export default new Vuex.Store({
     // *用户信息
     userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
     // *请求路径
-    baseUrl: DEV_BASEURL,
+    baseUrl: baseUrl,
     // *图片路径
-    baseImgUrl: DEV_IMG_BASEURL,
+    baseImgUrl: imgBaseUrl,
     // *菜单列表
     menuList: getMenuByRouter(routers),
     // *缓存列表

@@ -25,7 +25,7 @@ export default {
   },
   getArticles () {
     return axios.request({
-      url: 'articles/1/1000',
+      url: 'articles/0/1/1000',
       method: 'get'
     })
   },

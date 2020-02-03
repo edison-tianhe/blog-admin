@@ -2,7 +2,7 @@
   <div>
     <div class="demo-upload-list" v-for="(item,index) in uploadList" :key="index">
         <template v-if="item.status === 'finished'">
-            <img :src="`${baseImgUrl}/${item.url}`">
+            <img :src="`${baseImgUrl}${item.url}`">
             <div class="demo-upload-list-cover">
                 <Icon type="ios-eye-outline" @click.native="handleView(item.url)"></Icon>
                 <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
@@ -26,7 +26,7 @@
       :with-credentials="true"
       multiple
       type="drag"
-      :action="`${baseUrl}/upload`"
+      :action="`${baseUrl}upload`"
       style="display: inline-block;width:58px;">
       <div style="width: 58px;height:58px;line-height: 58px;">
         <Icon type="ios-camera" size="20"></Icon>
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     handleView (url) {
-      imagePreview([`${this.baseImgUrl}/${url}`])
+      imagePreview([`${this.baseImgUrl}${url}`])
     },
     handleRemove (file) {
       const fileList = this.$refs.upload.fileList
