@@ -9,7 +9,7 @@
     "analyzer": "cross-env use_analyzer=true npm run serve"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "core-js": "^3.4.3",
     "cross-env": "^6.0.3",
     "mavon-editor": "^2.7.7",
